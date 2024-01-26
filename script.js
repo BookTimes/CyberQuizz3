@@ -272,7 +272,7 @@ var qns = [
     options: ["Contemplate the challenges and possible countermeasures"],
   },
 ];
-// expectedLevelShufflingPncOnly(qns, anLog);
+expectedLevelShufflingPncOnly(qns, anLog);
 
 const askQn = function (i) {
   var w = 0;
@@ -512,10 +512,6 @@ function expectedLevelShufflingPncOnly(arr1, arr2) {
   ).sort(() => Math.random() - 0.5);
   const shuffledArr1 = permutation.map((index) => arr1[index]);
   const shuffledArr2 = permutation.map((index) => arr2[index]);
-  console.log(arr1);
-  console.log(arr2);
-  console.log(shuffledArr1);
-  console.log(shuffledArr2);
   arr1.length = 0;
   arr2.length = 0;
   arr1.push(...shuffledArr1);
