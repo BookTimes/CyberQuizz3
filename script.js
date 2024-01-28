@@ -407,7 +407,7 @@ function expectedLevelShufflingPncOnly(arr1, arr2) {
   arr2.push(...shuffledArr2);
 }
 function handleVisibilityChange() {
-  if (document.hidden) {
+  if (document.hidden && jv == true) {
     document.getElementById("let").innerHTML = "";
     document.getElementsByClassName(
       "overlay"
