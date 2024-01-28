@@ -4,16 +4,16 @@ var q = 0;
 var qnLog = [];
 // var anLog = [2, 0, 1, 1, 3, 0, 3, 2, 0, 1, 3, 0, 2, 1, 1, 2, 2, 3, 1, 0];
 var anLog = [
-  1, // Index of the correct answer for the first question
-  1, // Index of the correct answer for the second question
-  1, // Index of the correct answer for the third question
-  1, // Index of the correct answer for the fourth question
-  0, // Index of the correct answer for the fifth question
-  3, // Index of the correct answer for the sixth question
-  0, // Index of the correct answer for the seventh question
-  0, // Index of the correct answer for the eighth question (Extremely Hard)
-  0, // Index of the correct answer for the ninth question (Extremely Hard)
-  0, // Index of the correct answer for the tenth question (Extremely Hard)
+  1,
+  1,
+  1,
+  1,
+  0,
+  3,
+  0,
+  0, //(Extremely Hard)
+  0, //(Extremely Hard)
+  0, //(Extremely Hard)
 ];
 
 const endqns = 10;
@@ -382,7 +382,14 @@ document.getElementsByTagName("html")[0].addEventListener("mouseleave", () => {
       });
   }
 });
-const passd = "tacobell";
+var passd;
+setInterval(() => {
+  const startTime = new Date("2024-01-27T15:54:00");
+  const currentTime = new Date();
+  const timeDifferenceInMinutes = (currentTime - startTime) / (1000 * 60);
+  passd = timeDifferenceInMinutes <= 2 ? "tacobell" : "willywonka";
+}, 10000);
+
 const dataSend = function () {
   var mks = "";
   qnLog.forEach((e, i) => {
