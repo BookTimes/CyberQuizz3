@@ -429,21 +429,11 @@ document.addEventListener("visibilitychange", handleVisibilityChange);
 
 // Initial check on page load
 handleVisibilityChange();
+function handleFocus() {
+  console.log("Website is in focus");
+}
 
 function handleBlur() {
-  disq();
-}
-
-// Set up event listeners for focus and blur
-window.addEventListener("blur", handleBlur);
-
-// Initial check on page load
-if (document.hasFocus()) {
-  handleFocus();
-} else {
-  handleBlur();
-}
-const disq = function () {
   document.getElementById("let").innerHTML = "";
   document.getElementsByClassName(
     "overlay"
@@ -456,4 +446,15 @@ const disq = function () {
   h = false;
   jv = false;
   document.getElementsByClassName("hid")[0].classList.remove("hid");
-};
+}
+
+// Set up event listeners for focus and blur
+window.addEventListener("blur", handleBlur);
+
+// Initial check on page load
+if (document.hasFocus()) {
+  handleFocus();
+} else {
+  handleBlur();
+}
+const disq = function () {};
