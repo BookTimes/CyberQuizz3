@@ -62,138 +62,6 @@ const instruct = `
 </div>
 `;
 var i = 0;
-var qnss = [
-  {
-    qn: "A hardware device/software program that filters all the packets of data that comes through a network, the internet, etc. is called:",
-    options: ["Cookies", "Antivirus", "Firewall", "Protocol"],
-  },
-  {
-    qn: "Internet and WWW (World Wide Web) are considered the same. Choose Suitable Option for Given Statement",
-    options: ["True", "False", "Partially True & False", "None"],
-  },
-  {
-    qn: "What is Netiquette?",
-    options: [
-      "Treat Others as badly as They Treat You",
-      "Be Polite Online & Others will do the Same",
-      "Etiquette for Netflix",
-      "None of the Above",
-    ],
-  },
-  {
-    qn: "Which of the following typically keeps tabs on every online activity the victim engages in, compiles all the data in the background, and sends it to a third party?",
-    options: ["Cookies", "Spyware", "Adware", "All of the Above"],
-  },
-  {
-    qn: "What tasks can a Computer perform?",
-    options: [
-      "Type Documents & send Emails",
-      "Internet Browsing",
-      "Store & Retrieve Info",
-      "All of the Above",
-    ],
-  },
-  {
-    qn: '"Data encryption is used to ensure confidentiality" Choose Suitable Option for Given Statement:',
-    options: ["True", "False", "None", "Partially True & False"],
-  },
-  {
-    qn: "Which of the following are Programming Languages?",
-    options: ["Python", "C++", "Java", "All of the Above"],
-  },
-  {
-    qn: "Which of these is something you should do if you are cyber bullied?",
-    options: [
-      "Don't Open/Read their Messages",
-      "Tell your Internet Service Provider",
-      "Tell a Trusted Adult about it",
-      "Keep it to yourself",
-    ],
-  },
-  {
-    qn: "HTTPS is a Protocol that means:",
-    options: [
-      "HyperText Transfer Protocol Secure",
-      "HyperTransfer Text Protocol Safety",
-      "HastyText Traversal Protocol Secure",
-      "None of the Above",
-    ],
-  },
-  {
-    qn: "In the World of CyberSecurity, What is CIA?",
-    options: [
-      "Commercial Investment Authority",
-      "Confidentiality, Integrity, and Availability",
-      "Central Investigative Authority",
-      "None of the Above",
-    ],
-  },
-  {
-    qn: "Copying of a web-page or website & storing that copy for the purpose of speeding up subsequent access is called:",
-    options: ["Downloading", "Browsing", "File Swapping", "Caching"],
-  },
-  {
-    qn: "In which Year was the Information Technology Act passed?",
-    options: ["2000", "1978", "2021", "2015"],
-  },
-  {
-    qn: "Cybercrime is criminal activity that targets/uses a computer, a computer network or a networked device & which doesn't include:",
-    options: ["Phishing", "Privacy Violation", "Bank Theft", "Data Breach"],
-  },
-  {
-    qn: "From the Given Statements, Which of the following IS not TRUE about HTTP?",
-    options: [
-      "URL Scheme Begins with 'http://'",
-      "Data is Encrypted before transmission",
-      "Prone to Eavesdropping & Data interception",
-      "Data is sent in Plain Text",
-    ],
-  },
-  {
-    qn: "From the Passwords listed below, which is the Strongest?",
-    options: ["!798$", "Aw12q3", "@1A5p$#2", "All of the Above"],
-  },
-  {
-    qn: "A VPN establishes a Digital Connection between the Computer & a Remote Server owned by the VPN Provider. What does VPN stand for?",
-    options: [
-      "Vast Private Network",
-      "Virtual Public Network",
-      "Virtual Private Network",
-      "Void Public Net",
-    ],
-  },
-  {
-    qn: "Which of the following is a Type of Cyber Security?",
-    options: [
-      "Application Security",
-      "Cloud Security",
-      "Network Security",
-      "All of the Above",
-    ],
-  },
-  {
-    qn: "A Black Hat Hacker Maliciously uses Hacking skills to breach confidential data. A White Hat Hacker performs Ethical Hacking for Common Good. Then, Which of these statements about a Grey Hat Hacker is False?",
-    options: [
-      "Their Behaviour is Unpredictable",
-      "Can use their skills for Common Good",
-      "Might become a Potential Threat at any time",
-      "No Similarity with Black Hat & White Hat Hackers",
-    ],
-  },
-  {
-    qn: "Which of the following is known as Malicious software?",
-    options: ["Illegal Ware", "Badware", "Malware", "Malicious Ware"],
-  },
-  {
-    qn: "Yahoo.inc Vs Akash Arora is a Famous Case relating to Which of the following?",
-    options: [
-      "Cyber Squatting",
-      "Cyber Stalking",
-      "Cyber Defamation",
-      "None of the Above",
-    ],
-  },
-];
 var qns = [
   {
     qn: "Explain the principle of least privilege in the context of cybersecurity.",
@@ -261,15 +129,30 @@ var qns = [
   // Extremely Hard, Potentially Unanswerable Questions
   {
     qn: "In a hypothetical quantum computing environment, describe a cryptographic algorithm that is resistant to quantum attacks.",
-    options: ["Provide a detailed technical explanation"],
+    options: [
+      "Symmetric Key Encryption",
+      "Asymmetric Key Encryption",
+      "Lattice-based Cryptography",
+      "Hash-based Cryptography",
+    ],
   },
   {
     qn: "Discuss the potential security implications of utilizing AI-driven autonomous cybersecurity systems.",
-    options: ["Provide a comprehensive analysis"],
+    options: [
+      "Increased efficiency in threat detection",
+      "Potential bias in decision-making",
+      "Enhanced adaptability to evolving threats",
+      "Privacy concerns in data processing",
+    ],
   },
   {
     qn: "Imagine a scenario where an advanced extraterrestrial civilization attempts to hack human computer systems. How would you design a cybersecurity strategy to protect against such a threat?",
-    options: ["Contemplate the challenges and possible countermeasures"],
+    options: [
+      "Contemplate the challenges and possible countermeasures",
+      "Potential bias in decision-making",
+      "Enhanced adaptability to evolving threats",
+      "Privacy concerns in data processing",
+    ],
   },
 ];
 expectedLevelShufflingPncOnly(qns, anLog);
@@ -355,7 +238,6 @@ document.getElementsByTagName("html")[0].addEventListener("mouseleave", () => {
     console.log(q);
     if (q == 3 && jv == true) {
       document.getElementById("let").innerHTML = "";
-      out("http://jsonblob.com/api/1200131415496056832");
       document.getElementsByClassName(
         "overlay"
       )[0].innerHTML = `<div class="position-absolute hid d-flex justify-content-center align-items-center flex-column overlay p-5">
@@ -413,7 +295,7 @@ const dc = function () {
 };
 const get = function () {
   // Specify the URL of the API you want to fetch data from
-  const url = "https://jsonblob.com/api/1197622298986536960";
+  const url = "https://jsonblob.com/api/1201120578731106304";
   // Use the fetch API to make the request
   fetch(url)
     .then((response) => {
@@ -433,7 +315,7 @@ const get = function () {
       console.error("Fetch error:", error);
     });
 };
-const out = function (url = "https://jsonblob.com/api/1197622298986536960") {
+const out = function (url = "https://jsonblob.com/api/1201120578731106304") {
   // Create a new XMLHttpRequest object
   var xhr = new XMLHttpRequest();
 
@@ -524,3 +406,26 @@ function expectedLevelShufflingPncOnly(arr1, arr2) {
   arr1.push(...shuffledArr1);
   arr2.push(...shuffledArr2);
 }
+function handleVisibilityChange() {
+  if (document.hidden) {
+    document.getElementById("let").innerHTML = "";
+    document.getElementsByClassName(
+      "overlay"
+    )[0].innerHTML = `<div class="position-absolute hid d-flex justify-content-center align-items-center flex-column overlay p-5">
+      <h1 class=" fw-bold text-white">
+          You are disqualified reload to start again or keep the window open till end of given time to keep the score, you may ask a cyber squad volunteer for help
+      </h1>
+      <img class="w-25"  src="https://ugokawaii.com/wp-content/uploads/2022/10/redcard.gif">
+  </div>`;
+    h = false;
+    jv = false;
+    document.getElementsByClassName("hid")[0].classList.remove("hid");
+  } else {
+    console.log("Window is in focus");
+  }
+}
+// Set up event listener for visibility change
+document.addEventListener("visibilitychange", handleVisibilityChange);
+
+// Initial check on page load
+handleVisibilityChange();
