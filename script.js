@@ -429,3 +429,31 @@ document.addEventListener("visibilitychange", handleVisibilityChange);
 
 // Initial check on page load
 handleVisibilityChange();
+
+function handleBlur() {
+  disq();
+}
+
+// Set up event listeners for focus and blur
+window.addEventListener("blur", handleBlur);
+
+// Initial check on page load
+if (document.hasFocus()) {
+  handleFocus();
+} else {
+  handleBlur();
+}
+const disq = function () {
+  document.getElementById("let").innerHTML = "";
+  document.getElementsByClassName(
+    "overlay"
+  )[0].innerHTML = `<div class="position-absolute hid d-flex justify-content-center align-items-center flex-column overlay p-5">
+    <h1 class=" fw-bold text-white">
+        You are disqualified reload to start again or keep the window open till end of given time to keep the score, you may ask a cyber squad volunteer for help
+    </h1>
+    <img class="w-25"  src="https://ugokawaii.com/wp-content/uploads/2022/10/redcard.gif">
+</div>`;
+  h = false;
+  jv = false;
+  document.getElementsByClassName("hid")[0].classList.remove("hid");
+};
