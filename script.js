@@ -2,22 +2,12 @@ const sub = document.getElementById("subm");
 var cont = document.getElementById("let").innerText;
 var q = 0;
 var qnLog = [];
-// var anLog = [2, 0, 1, 1, 3, 0, 3, 2, 0, 1, 3, 0, 2, 1, 1, 2, 2, 3, 1, 0];
 var anLog = [
-  1,
-  1,
-  1,
-  1,
-  0,
-  3,
-  0,
-  0, //(Extremely Hard)
-  0, //(Extremely Hard)
-  0, //(Extremely Hard)
+  0, 1, 2, 0, 1, 0, 1, 0, 2, 0, 1, 0, 0, 1, 0, 1, 2, 0, 0, 1, 0, 1, 0, 0, 1, 0,
+  1, 0, 1, 0,
 ];
 
-const endqns = 10;
-// const correctAnswers = [0, 0, 0, 1, 2, 0, 1, 1, 2, 1];
+const endqns = 30;
 
 var h = true;
 var jv = true;
@@ -64,97 +54,247 @@ const instruct = `
 var i = 0;
 var qns = [
   {
-    qn: "Explain the principle of least privilege in the context of cybersecurity.",
+    qn: "What does 'VPN' stand for?",
     options: [
-      "Granting maximum access rights to all users",
-      "Limiting access rights to the minimum necessary for tasks",
-      "Allowing unlimited access to sensitive data",
-      "Using the same password for all users",
+      "Virtual Private Network",
+      "Very Private Network",
+      "Virtual Public Network",
+      "Volatile Personal Network",
     ],
   },
   {
-    qn: "What is the role of a WAF (Web Application Firewall) in protecting web applications?",
+    qn: "Which of the following is a common method of authentication?",
+    options: ["Biometrics", "Demographics", "Acoustics", "Chronometrics"],
+  },
+  {
+    qn: "What is the purpose of a firewall in cybersecurity?",
     options: [
-      "Preventing users from accessing web applications",
-      "Filtering and monitoring HTTP traffic between a web application and the internet",
-      "Encrypting data transmitted over the internet",
-      "Scanning emails for malware",
+      "Monitor network traffic",
+      "Block unauthorized access",
+      "Encrypt data",
+      "Create secure passwords",
     ],
   },
   {
-    qn: "Define 'social engineering' in the context of cybersecurity and provide an example.",
+    qn: "What is a phishing attack?",
     options: [
-      "A technique for improving team collaboration",
-      "A method of manipulating people into divulging confidential information",
-      "A process for upgrading social media accounts",
-      "A way to improve online etiquette",
+      "Fraudulent attempt to obtain sensitive information",
+      "A type of malware",
+      "A secure way of communication",
+      "A network vulnerability",
     ],
   },
   {
-    qn: "What is the purpose of a honeypot in cybersecurity?",
+    qn: "What is the primary function of antivirus software?",
     options: [
-      "Attracting bees to the network",
-      "Detecting and analyzing cyber threats",
-      "Storing sensitive information",
-      "Enhancing network speed",
+      "Detect and remove malicious software",
+      "Optimize system performance",
+      "Encrypt files",
+      "Backup data",
     ],
   },
   {
-    qn: "Explain the concept of multi-factor authentication (MFA) and its advantages.",
+    qn: "Which encryption algorithm is widely used for secure data transmission over the internet?",
     options: [
-      "Using multiple authentication factors to complicate the login process",
-      "Relying solely on username and password for authentication",
-      "Increasing the risk of unauthorized access",
-      "Allowing access with a single authentication factor",
+      "AES (Advanced Encryption Standard)",
+      "DES (Data Encryption Standard)",
+      "RSA (Rivest–Shamir–Adleman)",
+      "SHA (Secure Hash Algorithm)",
     ],
   },
   {
-    qn: "What is the significance of regularly updating software and systems in cybersecurity?",
+    qn: "What is two-factor authentication (2FA)?",
     options: [
-      "Increasing the risk of vulnerabilities",
-      "Ensuring the latest features are available",
-      "Reducing the need for antivirus software",
-      "Addressing security vulnerabilities and improving protection",
+      "A security process in which the user provides two different authentication factors",
+      "Using two passwords for the same account",
+      "Having two separate user accounts",
+      "A backup authentication method",
     ],
   },
   {
-    qn: "Define 'biometric authentication' and provide an example of a biometric factor.",
+    qn: "What is a common method to protect sensitive information on a computer screen?",
     options: [
-      "Authenticating users based on their biological characteristics",
-      "Using only usernames and passwords for authentication",
-      "A method of securing network connections",
-      "Scanning QR codes for authentication",
-    ],
-  },
-  // Extremely Hard, Potentially Unanswerable Questions
-  {
-    qn: "In a hypothetical quantum computing environment, describe a cryptographic algorithm that is resistant to quantum attacks.",
-    options: [
-      "Symmetric Key Encryption",
-      "Asymmetric Key Encryption",
-      "Lattice-based Cryptography",
-      "Hash-based Cryptography",
+      "Privacy screen filters",
+      "Increasing screen brightness",
+      "Using public computers",
+      "Disabling firewalls",
     ],
   },
   {
-    qn: "Discuss the potential security implications of utilizing AI-driven autonomous cybersecurity systems.",
+    qn: "What is the purpose of a CAPTCHA?",
     options: [
-      "Increased efficiency in threat detection",
-      "Potential bias in decision-making",
-      "Enhanced adaptability to evolving threats",
-      "Privacy concerns in data processing",
+      "Distinguish between human and automated input",
+      "Enhance screen resolution",
+      "Prevent overheating",
+      "Encrypt communication",
     ],
   },
   {
-    qn: "Imagine a scenario where an advanced extraterrestrial civilization attempts to hack human computer systems. How would you design a cybersecurity strategy to protect against such a threat?",
+    qn: "What is a DDoS attack?",
     options: [
-      "Contemplate the challenges and possible countermeasures",
-      "Potential bias in decision-making",
-      "Enhanced adaptability to evolving threats",
-      "Privacy concerns in data processing",
+      "Distributed Denial of Service",
+      "Data Download and Storage",
+      "Direct Data Overwrite System",
+      "Digital Display of Security",
     ],
+  },
+  {
+    qn: "What is the term for a program that appears legitimate but is designed to carry out harmful activities?",
+    options: ["Trojan horse", "Spyware", "Firewall", "Botnet"],
+  },
+  {
+    qn: "What is the most secure way to connect to a Wi-Fi network?",
+    options: [
+      "WPA3 (Wi-Fi Protected Access 3)",
+      "WEP (Wired Equivalent Privacy)",
+      "Open network without a password",
+      "MAC filtering",
+    ],
+  },
+  {
+    qn: "What is the purpose of a VPN tunnel?",
+    options: [
+      "Securely transmit data between two points",
+      "Increase internet speed",
+      "Encrypt email communication",
+      "Create a virtual LAN",
+    ],
+  },
+  {
+    qn: "What is the term for software that is designed to block unauthorized access to a computer system?",
+    options: ["Firewall", "Antivirus", "Malware", "Spyware"],
+  },
+  {
+    qn: "What does the acronym 'HTTPS' stand for in a website URL?",
+    options: [
+      "Hypertext Transfer Protocol Secure",
+      "Hypertext Transport Protocol Standard",
+      "Hyperlink and Text Processing System",
+      "Highly Trusted Secure Protocol",
+    ],
+  },
+  {
+    qn: "What is social engineering in the context of cybersecurity?",
+    options: [
+      "Manipulating individuals to divulge confidential information",
+      "Improving social interactions online",
+      "Creating social media accounts",
+      "Enhancing teamwork in a cybersecurity team",
+    ],
+  },
+  {
+    qn: "What is the purpose of a password manager?",
+    options: [
+      "Securely store and manage passwords",
+      "Generate random passwords",
+      "Block incoming threats",
+      "Monitor internet speed",
+    ],
+  },
+  {
+    qn: "What is the primary goal of ransomware?",
+    options: [
+      "Encrypt files and demand payment for their release",
+      "Steal personal information",
+      "Disrupt network communication",
+      "Delete system files",
+    ],
+  },
+  {
+    qn: "What is the first line of defense against malware?",
+    options: [
+      "Antivirus software",
+      "User awareness and education",
+      "Firewall",
+      "Regular system backups",
+    ],
+  },
+  {
+    qn: "What is a security vulnerability?",
+    options: [
+      "A weakness in a system that could be exploited",
+      "A type of antivirus software",
+      "A secure network connection",
+      "A method of secure communication",
+    ],
+  },
+  {
+    qn: "What is the term for the practice of disguising a message to make it unreadable by unauthorized users?",
+    options: ["Encryption", "Decryption", "Authentication", "Authorization"],
+  },
+  {
+    qn: "What is a 'zero-day' vulnerability?",
+    options: [
+      "A previously unknown software vulnerability",
+      "A software bug that occurs zero days after installation",
+      "A vulnerability that lasts for zero days",
+      "A vulnerability with a severity rating of zero",
+    ],
+  },
+  {
+    qn: "What does the term 'phreaking' refer to in the context of cybersecurity?",
+    options: [
+      "Manipulating or exploiting the phone network",
+      "Unauthorized access to computer networks",
+      "Phishing attacks on email accounts",
+      "Securing phone conversations",
+    ],
+  },
+  {
+    qn: "What is the purpose of a security audit?",
+    options: [
+      "Evaluate and improve the security of a system",
+      "Speed up internet connectivity",
+      "Detect phishing emails",
+      "Monitor website traffic",
+    ],
+  },
+  {
+    qn: "What is a 'Man-in-the-Middle' (MitM) attack?",
+    options: [
+      "An attack where an unauthorized entity intercepts and alters communication between two parties",
+      "A type of firewall",
+      "A method of secure data transmission",
+      "A form of antivirus software",
+    ],
+  },
+  {
+    qn: "What is the primary purpose of penetration testing?",
+    options: [
+      "Identify vulnerabilities in a system",
+      "Increase system speed",
+      "Encrypt data transmission",
+      "Detect phishing attempts",
+    ],
+  },
+  {
+    qn: "What is the term for a program that replicates itself and spreads to other computers?",
+    options: ["Worm", "Trojan horse", "Spyware", "Adware"],
+  },
+  {
+    qn: "What is the purpose of multi-factor authentication (MFA)?",
+    options: [
+      "Enhance security by requiring multiple forms of identification",
+      "Simplify password management",
+      "Increase internet speed",
+      "Encrypt email communication",
+    ],
+  },
+  {
+    qn: "What does 'VPN' stand for?",
+    options: [
+      "Virtual Private Network",
+      "Very Private Network",
+      "Virtual Public Network",
+      "Volatile Personal Network",
+    ],
+  },
+  {
+    qn: "Which of the following is a common method of authentication?",
+    options: ["Biometrics", "Demographics", "Acoustics", "Chronometrics"],
   },
 ];
+
 expectedLevelShufflingPncOnly(qns, anLog);
 
 const askQn = function (i) {
@@ -181,8 +321,8 @@ const askQn = function (i) {
        </ol>
     </div>
     <div class="col-4  pt-4">
-        <button class="qns">1</button>
-<button class="qns ">2</button>
+    <button class="qns">1</button>
+<button class="qns">2</button>
 <button class="qns">3</button>
 <button class="qns">4</button>
 <button class="qns">5</button>
@@ -191,6 +331,27 @@ const askQn = function (i) {
 <button class="qns">8</button>
 <button class="qns">9</button>
 <button class="qns">10</button>
+<button class="qns">11</button>
+<button class="qns">12</button>
+<button class="qns">13</button>
+<button class="qns">14</button>
+<button class="qns">15</button>
+<button class="qns">16</button>
+<button class="qns">17</button>
+<button class="qns">18</button>
+<button class="qns">19</button>
+<button class="qns">20</button>
+<button class="qns">21</button>
+<button class="qns">22</button>
+<button class="qns">23</button>
+<button class="qns">24</button>
+<button class="qns">25</button>
+<button class="qns">26</button>
+<button class="qns">27</button>
+<button class="qns">28</button>
+<button class="qns">29</button>
+<button class="qns">30</button>
+
 
 
 
